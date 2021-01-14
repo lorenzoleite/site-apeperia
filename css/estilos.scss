@@ -1,3 +1,25 @@
+//variaveis usadas no meu sass
+$cor-padrao: red;
+$cor-auxiliar: #1e2c35;
+$cor-branca: white;
+
+//mixins usados no meu sass
+@mixin borda-arredondada($raio: 0.3em) {
+  -webkit-border-radius: $raio;
+  border-radius: $raio;
+}
+
+@mixin sombra-padrao() {
+  -webkit-box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3);
+}
+
+@mixin image-replacement() {
+	text-indent: -9999px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+
 /** Geral **/
 body {
   font-family: "Roboto Slab", serif;
@@ -27,8 +49,8 @@ h2 {
 
 /** Header **/
 header {
-  border-top: 5px solid red;
-  background: rgba(30, 44, 53, 0.8);
+  border-top: 5px solid $cor-padrao;
+  background: rgba($cor-auxiliar, 0.8);
   height: 90px;
   width: 100%;
   position: absolute;
@@ -44,20 +66,24 @@ header .container {
   top: -0.5em;
   font-size: 1.2em;
   font-weight: lighter;
-}
-.menu-principal ul {
-  padding-left: 0;
-}
-.menu-principal li {
-  display: inline-block;
-  width: 5em;
-}
-.menu-principal a {
-  color: white;
-  text-decoration: none;
-}
-.menu-principal a:hover {
-  text-decoration: underline;
+
+  ul { //aninhamento de filhos da classe mae
+    padding-left: 0;
+  }
+
+  li {
+    display: inline-block;
+    width: 5em;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 /** Destaque **/
@@ -87,14 +113,12 @@ header .container {
 
 .destaque button {
   margin-top: 1em;
-  background: red;
+  background: $cor-padrao;
   border: 0;
   padding: 0.6em;
   font-size: 1.2em;
-  -webkit-border-radius: 50px;
-  border-radius: 50px;
-  -webkit-box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3);
+  @include borda-arredondada(50px);
+  @include sombra-padrao();
   font-weight: bold;
 }
 
@@ -130,9 +154,7 @@ header .container {
   display: inline-block;
   width: 50px;
   height: 60px;
-  text-indent: -9999px;
-  overflow: hidden;
-  background-repeat: no-repeat;
+  @include image-replacement();
   background-position: center;
   margin: 1em 1.5em 0 0;
 }
@@ -155,11 +177,11 @@ header .container {
 
 /** Planos **/
 .planos {
-  background: #1e2c35;
+  background: $cor-auxiliar;
 }
 
 .planos h2 {
-  color: white;
+  color: $cor-branca;
 }
 
 .plano {
@@ -175,9 +197,9 @@ header .container {
 }
 
 .plano h3 {
-  color: white;
+  color: $cor-branca;
   font-size: 1.8em;
-  background: red;
+  background: $cor-padrao;
   text-align: center;
   height: 2em;
   padding-top: 0.6em;
@@ -186,38 +208,39 @@ header .container {
 
 .plano div {
   text-align: center;
-  color: red;
+  color: $cor-padrao;
   font-size: 2.75em;
 }
 
 .itens-plano {
   padding-left: 1.2em;
-}
-.itens-plano li {
-  font-size: 1em;
-  list-style: none;
-  border-bottom: 1px solid #acacac;
-  padding: 0.5em;
-  width: 14.8em;
-}
-.itens-plano li:last-child {
-  border: 0;
-}
-.itens-plano span {
-  float: right;
+
+  li {
+    font-size: 1em;
+    list-style: none;
+    border-bottom: 1px solid #acacac;
+    padding: 0.5em;
+    width: 14.8em;
+  }
+
+  li:last-child {
+    border: 0;
+  }
+
+  span {
+    float: right;
+  }
 }
 
 .plano button {
-  background: red;
+  background: $cor-padrao;
   border: 0;
-  color: white;
+  color: $cor-branca;
   width: 210px;
   height: 38px;
   font-size: 1.2em;
-  -webkit-border-radius: 0.3em;
-  border-radius: 0.3em;
-  -webkit-box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3);
+  @include borda-arredondada();
+  @include sombra-padrao();
   margin-left: 2em;
 }
 
@@ -298,23 +321,20 @@ textarea {
   width: 100%;
   margin-bottom: 0.8em;
   padding: 4px 8px;
-  -webkit-border-radius: 0.3em;
-  border-radius: 0.3em;
+  @include borda-arredondada();
   border: 2px solid #ccc;
 }
 
 .contato button {
   margin: 0 auto;
-  background: red;
+  background: $cor-padrao;
   border: 0;
-  color: white;
+  color: $cor-branca;
   width: 210px;
   height: 38px;
   font-size: 1.2em;
-  -webkit-border-radius: 0.3em;
-  border-radius: 0.3em;
-  -webkit-box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3);
+  @include borda-arredondada();
+  @include sombra-padrao();
 }
 
 /** Footer **/
@@ -337,7 +357,7 @@ footer::after {
 
 footer::before {
   content: "";
-  background: #1e2c35;
+  background: $cor-auxiliar;
   top: 0;
   left: 0;
   bottom: 0;
@@ -382,7 +402,7 @@ footer .container img {
 }
 
 footer a {
-  color: white;
+  color: $cor-branca;
   text-decoration: none;
 }
 
@@ -394,9 +414,7 @@ footer a {
   display: block;
   width: 55px;
   height: 55px;
-  text-indent: -9999px;
-  overflow: hidden;
-  background-repeat: no-repeat;
+  @include image-replacement();
   margin-left: 1em;
 }
 
@@ -418,5 +436,3 @@ footer a {
 }
 
 /*# sourceMappingURL=estilos.scss.map */
-
-/*# sourceMappingURL=estilos.css.map */
